@@ -8,9 +8,9 @@ if (!defined('DEBUG')) {
 }
 
 // Configuration de la base de données
- $dsn = 'mysql:dbname=lemercie;host=localhost;charset=utf8';
- $username = 'lemercie';
- $password = '........';
+ $dsn = "mysql:dbname=bacoupse;host=localhost;charset=utf8";
+ $username = "bacoupse";
+ $password = "di2YU7ZM";
 
 
 // chemin absolu vers le répertoire du projet SUR DEV-ISI 
