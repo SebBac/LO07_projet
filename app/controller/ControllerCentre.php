@@ -1,9 +1,9 @@
 
 <!-- ----- debut ControllerVin -->
 <?php
-require_once '../model/ModelVin.php';
+require_once '../model/ModelCentre.php';
 
-class ControllerVin {
+class ControllerCentre {
  // --- page d'acceuil
  public static function caveAccueil() {
   include 'config.php';
