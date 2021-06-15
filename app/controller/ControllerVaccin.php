@@ -1,5 +1,5 @@
 
-<!-- ----- debut ControllerVin -->
+<!-- ----- debut ControllerVaccin -->
 <?php
 require_once '../model/ModelVaccin.php';
 
@@ -9,65 +9,65 @@ class ControllerVaccin {
   include 'config.php';
   $vue = $root . '/app/view/viewCaveAccueil.php';
   if (DEBUG)
-   echo ("ControllerVin : caveAccueil : vue = $vue");
+   echo ("ControllerVaccin : caveAccueil : vue = $vue");
   require ($vue);
  }
 
- // --- Liste des vins
- public static function vinReadAll() {
-  $results = ModelVin::getAll();
+ // --- Liste des vaccins
+ public static function vaccinReadAll() {
+  $results = ModelVaccin::getAll();
   // ----- Construction chemin de la vue
   include 'config.php';
-  $vue = $root . '/app/view/vin/viewAll.php';
+  $vue = $root . '/app/view/vaccin/viewAll.php';
   if (DEBUG)
-   echo ("ControllerVin : vinReadAll : vue = $vue");
+   echo ("ControllerVaccin : vaccinReadAll : vue = $vue");
   require ($vue);
  }
 
  // Affiche un formulaire pour sélectionner un id qui existe
- public static function vinReadId() {
-  $results = ModelVin::getAllId();
+ public static function vaccinReadId() {
+  $results = ModelVaccin::getAllId();
 
   // ----- Construction chemin de la vue
   include 'config.php';
-  $vue = $root . '/app/view/vin/viewId.php';
+  $vue = $root . '/app/view/vaccin/viewId.php';
   require ($vue);
  }
 
- // Affiche un vin particulier (id)
- public static function vinReadOne() {
-  $vin_id = $_GET['id'];
-  $results = ModelVin::getOne($vin_id);
+ // Affiche un vaccin particulier (id)
+ public static function vaccinReadOne() {
+  $vaccin_id = $_GET['id'];
+  $results = ModelVaccin::getOne($vaccin_id);
 
   // ----- Construction chemin de la vue
   include 'config.php';
-  $vue = $root . '/app/view/vin/viewAll.php';
+  $vue = $root . '/app/view/vaccin/viewAll.php';
   require ($vue);
  }
 
- // Affiche le formulaire de creation d'un vin
- public static function vinCreate() {
+ // Affiche le formulaire de creation d'un vaccin
+ public static function vaccinCreate() {
   // ----- Construction chemin de la vue
   include 'config.php';
-  $vue = $root . '/app/view/vin/viewInsert.php';
+  $vue = $root . '/app/view/vaccin/viewInsert.php';
   require ($vue);
  }
 
- // Affiche un formulaire pour récupérer les informations d'un nouveau vin.
+ // Affiche un formulaire pour récupérer les informations d'un nouveau vaccin.
  // La clé est gérée par le systeme et pas par l'internaute
- public static function vinCreated() {
+ public static function vaccinCreated() {
   // ajouter une validation des informations du formulaire
-  $results = ModelVin::insert(
+  $results = ModelVaccin::insert(
       htmlspecialchars($_GET['cru']), htmlspecialchars($_GET['annee']), htmlspecialchars($_GET['degre'])
   );
   // ----- Construction chemin de la vue
   include 'config.php';
-  $vue = $root . '/app/view/vin/viewInserted.php';
+  $vue = $root . '/app/view/vaccin/viewInserted.php';
   require ($vue);
  }
  
 }
 ?>
-<!-- ----- fin ControllerVin -->
+<!-- ----- fin ControllerVaccin -->
 
 

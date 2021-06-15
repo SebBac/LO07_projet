@@ -1,5 +1,5 @@
 
-<!-- ----- debut ControllerVin -->
+<!-- ----- debut ControllerPatient -->
 <?php
 require_once '../model/ModelPatient.php';
 
@@ -9,65 +9,65 @@ class ControllerPatient {
   include 'config.php';
   $vue = $root . '/app/view/viewCaveAccueil.php';
   if (DEBUG)
-   echo ("ControllerVin : caveAccueil : vue = $vue");
+   echo ("ControllerPatient : caveAccueil : vue = $vue");
   require ($vue);
  }
 
- // --- Liste des vins
- public static function vinReadAll() {
-  $results = ModelVin::getAll();
+ // --- Liste des patients
+ public static function patientReadAll() {
+  $results = ModelPatient::getAll();
   // ----- Construction chemin de la vue
   include 'config.php';
-  $vue = $root . '/app/view/vin/viewAll.php';
+  $vue = $root . '/app/view/patient/viewAll.php';
   if (DEBUG)
-   echo ("ControllerVin : vinReadAll : vue = $vue");
+   echo ("ControllerPatient : patientReadAll : vue = $vue");
   require ($vue);
  }
 
  // Affiche un formulaire pour sélectionner un id qui existe
- public static function vinReadId() {
-  $results = ModelVin::getAllId();
+ public static function patientReadId() {
+  $results = ModelPatient::getAllId();
 
   // ----- Construction chemin de la vue
   include 'config.php';
-  $vue = $root . '/app/view/vin/viewId.php';
+  $vue = $root . '/app/view/patient/viewId.php';
   require ($vue);
  }
 
- // Affiche un vin particulier (id)
- public static function vinReadOne() {
-  $vin_id = $_GET['id'];
-  $results = ModelVin::getOne($vin_id);
+ // Affiche un patient particulier (id)
+ public static function patientReadOne() {
+  $patient_id = $_GET['id'];
+  $results = ModelPatient::getOne($patient_id);
 
   // ----- Construction chemin de la vue
   include 'config.php';
-  $vue = $root . '/app/view/vin/viewAll.php';
+  $vue = $root . '/app/view/patient/viewAll.php';
   require ($vue);
  }
 
- // Affiche le formulaire de creation d'un vin
- public static function vinCreate() {
+ // Affiche le formulaire de creation d'un patient
+ public static function patientCreate() {
   // ----- Construction chemin de la vue
   include 'config.php';
-  $vue = $root . '/app/view/vin/viewInsert.php';
+  $vue = $root . '/app/view/patient/viewInsert.php';
   require ($vue);
  }
 
- // Affiche un formulaire pour récupérer les informations d'un nouveau vin.
+ // Affiche un formulaire pour récupérer les informations d'un nouveau patient.
  // La clé est gérée par le systeme et pas par l'internaute
- public static function vinCreated() {
+ public static function patientCreated() {
   // ajouter une validation des informations du formulaire
-  $results = ModelVin::insert(
+  $results = ModelPatient::insert(
       htmlspecialchars($_GET['cru']), htmlspecialchars($_GET['annee']), htmlspecialchars($_GET['degre'])
   );
   // ----- Construction chemin de la vue
   include 'config.php';
-  $vue = $root . '/app/view/vin/viewInserted.php';
+  $vue = $root . '/app/view/patient/viewInserted.php';
   require ($vue);
  }
  
 }
 ?>
-<!-- ----- fin ControllerVin -->
+<!-- ----- fin ControllerPatient -->
 
 
