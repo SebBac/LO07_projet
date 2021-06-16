@@ -5,7 +5,7 @@
 require_once 'Model.php';
 
 class modelPatient {
- private $id, $label, $adresse;
+ private $id, $nom, $prenom, $adresse;
 
  // pas possible d'avoir 2 constructeurs
  public function __construct($id = NULL, $nom = NULL, $prenom = NULL, $adresse = NULL) {
