@@ -16,7 +16,7 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
     <table class = "table table-striped table-bordered">
       <thead>
         <tr>
-          <th scope = "col">centre_id</th>
+          <th scope = "col">centre</th>
           <th scope = "col">doses</th>
         </tr>
       </thead>

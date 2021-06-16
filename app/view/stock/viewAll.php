@@ -10,9 +10,6 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
       <?php
       include $root . '/app/view/fragment/fragmentCovidMenu.html';
       include $root . '/app/view/fragment/fragmentCovidJumbotron.html';
-      echo "<pre>";
-      print_r($results);
-      echo "</pre>";
       ?>
     <table class = "table table-striped table-bordered">
       <thead>
@@ -24,8 +21,9 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
       </thead>
       <tbody>
           <?php
-          foreach ($results[0] as $element) {
+          foreach ($results[0] as $element) { if($element[2]!=0) {
            printf("<tr><td>%s</td><td>%s</td><td>%d</td></tr>", $results[1][$element[0]-1][0], $results[2][$element[0]-1][0], $element[2]);
+          }
           }
           ?>
       </tbody>
