@@ -1,5 +1,5 @@
 
-<!-- ----- début viewId -->
+<!-- ----- début viewLabel -->
 <?php 
 require ($root . '/app/view/fragment/fragmentCovidHeader.html');
 ?>
@@ -37,4 +37,4 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
 
   <?php include $root . '/app/view/fragment/fragmentCovidFooter.html'; ?>
 
-  <!-- ----- fin viewId -->
+  <!-- ----- fin viewLabel -->

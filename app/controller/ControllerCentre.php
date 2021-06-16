@@ -4,15 +4,6 @@
 require_once '../model/ModelCentre.php';
 
 class ControllerCentre {
- // --- page d'acceuil
- public static function caveAccueil() {
-  include 'config.php';
-  $vue = $root . '/app/view/viewCovidAccueil.php';
-  if (DEBUG)
-   echo ("ControllerCentre : covidAccueil : vue = $vue");
-  require ($vue);
- }
-
  // --- Liste des centres
  public static function centreReadAll() {
   $results = ModelCentre::getAll();
@@ -46,7 +37,7 @@ class ControllerCentre {
  }
 
  // Affiche le formulaire de creation d'un centre
- public static function centreCreate() {
+ public static function centreAdd() {
   // ----- Construction chemin de la vue
   include 'config.php';
   $vue = $root . '/app/view/centre/viewInsert.php';
@@ -55,17 +46,17 @@ class ControllerCentre {
 
  // Affiche un formulaire pour récupérer les informations d'un nouveau centre.
  // La clé est gérée par le systeme et pas par l'internaute
- public static function centreCreated() {
+ public static function centreAdded() {
   // ajouter une validation des informations du formulaire
   $results = ModelCentre::insert(
-      htmlspecialchars($_GET['cru']), htmlspecialchars($_GET['annee']), htmlspecialchars($_GET['degre'])
+      htmlspecialchars($_GET['label']), htmlspecialchars($_GET['adresse'])
   );
   // ----- Construction chemin de la vue
   include 'config.php';
   $vue = $root . '/app/view/centre/viewInserted.php';
   require ($vue);
  }
- 
+ */
 }
 ?>
 <!-- ----- fin ControllerCentre -->

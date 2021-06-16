@@ -28,20 +28,21 @@ switch ($action) {
         break;
 
     case "centreAdd" :
+    case "centreAdded" :
     case "centreReadAll" :
-    case "patientReadId" :
         ControllerCentre::$action();
         break;
     
     case "patientAdd" :
     case "patientReadAll" :
+    case "patientReadId" :
         ControllerPatient::$action();
         break;
     
     case "stockReadAll" :
     case "stockReadGlobal" :
     case "stockAddVaccin" :
-        ControllerVaccin::$action();
+        ControllerStock::$action();
         break;
     
 
