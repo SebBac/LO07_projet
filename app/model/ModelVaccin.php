@@ -5,15 +5,15 @@
 require_once 'Model.php';
 
 class modelVaccin {
- private $id, $label, $dose;
+ private $id, $label, $doses;
 
  // pas possible d'avoir 2 constructeurs
- public function __construct($id = NULL, $label = NULL, $dose = NULL) {
+ public function __construct($id = NULL, $label = NULL, $doses = NULL) {
   // valeurs nulles si pas de passage de parametres
   if (!is_null($id)) {
    $this->id = $id;
    $this->label = $label;
-   $this->dose = $dose;
+   $this->doses = $doses;
   }
  }
 
@@ -25,8 +25,8 @@ class modelVaccin {
   $this->label = $label;
  }
 
- function setDose($dose) {
-  $this->dose = $dose;
+ function setDose($doses) {
+  $this->doses = $doses;
  }
 
  function getId() {
@@ -38,7 +38,7 @@ class modelVaccin {
  }
 
  function getDose() {
-  return $this->dose;
+  return $this->doses;
  }
  
  
@@ -100,7 +100,7 @@ class modelVaccin {
   }
  }
 
- public static function insert($label, $dose) {
+ public static function insert($label, $doses) {
   try {
    $database = Model::getInstance();
 
@@ -112,12 +112,12 @@ class modelVaccin {
    $id++;
 
    // ajout d'un nouveau tuple;
-   $query = "insert into vaccin value (:id, :label, :dose)";
+   $query = "insert into vaccin value (:id, :label, :doses)";
    $statement = $database->prepare($query);
    $statement->execute([
      'id' => $id,
      'label' => $label,
-     'dose' => $dose,
+     'doses' => $doses,
    ]);
    return $id;
   } catch (PDOException $e) {

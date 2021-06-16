@@ -17,7 +17,7 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
      echo("<ul>");
      echo ("<li>id = " . $results . "</li>");
      echo ("<li>label = " . $_GET['label'] . "</li>");
-     echo ("<li>dose = " . $_GET['dose'] . "</li>");
+     echo ("<li>dose = " . $_GET['doses'] . "</li>");
      echo("</ul>");
     } else {
      echo ("<h3>Problème d'insertion du Vaccin</h3>");

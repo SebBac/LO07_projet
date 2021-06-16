@@ -16,7 +16,7 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
       <div class="form-group">
         <input type="hidden" name='action' value='vaccinCreated'>        
         <label for="id">label : </label><input type="text" name='label' size='75' value='Champagne de déconfinement'>                           
-        <label for="id">dose : </label><input type="number" name='dose' value='1'>              
+        <label for="id">dose : </label><input type="number" name='doses' value='1'>              
       </div>
       <p/>
       <button class="btn btn-primary" type="submit">Go</button>
