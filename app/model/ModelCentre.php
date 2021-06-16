@@ -75,6 +75,11 @@ class modelCentre {
      'label' => $label,
      'adresse' => $adresse,
    ]);
+   
+   //ajout du centre dans le stock
+   $query = "insert into stock value (:id, 1, 0)";
+   $statement = $database->prepare($query);
+   $statement->execute(['id' => $id]);
    return $id;
   } catch (PDOException $e) {
    printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
