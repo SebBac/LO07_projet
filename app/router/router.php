@@ -1,5 +1,5 @@
 
-<!-- ----- debut Router1 -->
+<!-- ----- debut Router -->
 <?php
 require ('../controller/ControllerVin.php');
 
@@ -25,9 +25,9 @@ switch ($action) {
 
  // Tache par défaut
  default:
-  $action = "caveAccueil";
+  $action = "covidAccueil";
   ControllerVin::$action();
 }
 ?>
-<!-- ----- Fin Router1 -->
+<!-- ----- Fin Router -->
 

@@ -7,9 +7,9 @@ class ControllerRDV {
  // --- page d'acceuil
  public static function caveAccueil() {
   include 'config.php';
-  $vue = $root . '/app/view/viewCaveAccueil.php';
+  $vue = $root . '/app/view/viewCovidAccueil.php';
   if (DEBUG)
-   echo ("ControllerRDV : caveAccueil : vue = $vue");
+   echo ("ControllerRDV : covidAccueil : vue = $vue");
   require ($vue);
  }
 

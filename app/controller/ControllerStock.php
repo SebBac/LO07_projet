@@ -7,9 +7,9 @@ class ControllerStock {
  // --- page d'acceuil
  public static function caveAccueil() {
   include 'config.php';
-  $vue = $root . '/app/view/viewCaveAccueil.php';
+  $vue = $root . '/app/view/viewCovidAccueil.php';
   if (DEBUG)
-   echo ("ControllerStock : caveAccueil : vue = $vue");
+   echo ("ControllerStock : covidAccueil : vue = $vue");
   require ($vue);
  }
 

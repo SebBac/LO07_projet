@@ -7,9 +7,9 @@ class ControllerCentre {
  // --- page d'acceuil
  public static function caveAccueil() {
   include 'config.php';
-  $vue = $root . '/app/view/viewCaveAccueil.php';
+  $vue = $root . '/app/view/viewCovidAccueil.php';
   if (DEBUG)
-   echo ("ControllerCentre : caveAccueil : vue = $vue");
+   echo ("ControllerCentre : covidAccueil : vue = $vue");
   require ($vue);
  }
 

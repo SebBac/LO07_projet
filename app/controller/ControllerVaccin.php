@@ -5,11 +5,11 @@ require_once '../model/ModelVaccin.php';
 
 class ControllerVaccin {
  // --- page d'acceuil
- public static function caveAccueil() {
+ public static function covidAccueil() {
   include 'config.php';
-  $vue = $root . '/app/view/viewCaveAccueil.php';
+  $vue = $root . '/app/view/viewCovidAccueil.php';
   if (DEBUG)
-   echo ("ControllerVaccin : caveAccueil : vue = $vue");
+   echo ("ControllerVaccin : covidAccueil : vue = $vue");
   require ($vue);
  }
 
