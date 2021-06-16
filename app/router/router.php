@@ -34,6 +34,7 @@ switch ($action) {
         break;
     
     case "patientAdd" :
+    case "patientAdded" :
     case "patientReadAll" :
     case "patientReadId" :
         ControllerPatient::$action();

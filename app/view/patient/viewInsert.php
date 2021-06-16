@@ -14,8 +14,9 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
 
     <form role="form" method='get' action='router.php'>
       <div class="form-group">
-        <input type="hidden" name='action' value='centreAdded'>        
-        <label for="label">label : </label><input id="label" type="text" name='label' size='75' value='BacGay'>                           
+        <input type="hidden" name='action' value='patientAdded'>        
+        <label for="nom">Nom : </label><input id="nom" type="text" name='nom' size='20' value='Provencale'>
+        <label for="prenom">Prénom : </label><input id="prenom" type="text" name='prenom' size='20' value='LeGaulois'>
         <label for="adresse">adresse : </label><input id="adresse" type="text" name='adresse' value='Troyes, 12 rue de LO07'>              
       </div>
       <p/>

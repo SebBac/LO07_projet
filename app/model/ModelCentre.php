@@ -4,7 +4,7 @@
 <?php
 require_once 'Model.php';
 
-class modelVaccin {
+class modelCentre {
  private $id, $label, $adresse;
 
  // pas possible d'avoir 2 constructeurs
@@ -13,7 +13,7 @@ class modelVaccin {
   if (!is_null($id)) {
    $this->id = $id;
    $this->label = $label;
-   $this->doses = $adresse;
+   $this->adresse = $adresse;
   }
  }
 
@@ -25,8 +25,8 @@ class modelVaccin {
   $this->label = $label;
  }
 
- function setDose($adresse) {
-  $this->doses = $adresse;
+ function setAdresse($adresse) {
+  $this->adresse = $adresse;
  }
 
  function getId() {
@@ -56,7 +56,7 @@ class modelVaccin {
   }
  }
 
- public static function insert($label, $doses) {
+ public static function insert($label, $adresse) {
   try {
    $database = Model::getInstance();
 

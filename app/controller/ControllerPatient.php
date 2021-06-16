@@ -46,7 +46,7 @@ class ControllerPatient {
  }
 
  // Affiche le formulaire de creation d'un patient
- public static function patientCreate() {
+ public static function patientAdd() {
   // ----- Construction chemin de la vue
   include 'config.php';
   $vue = $root . '/app/view/patient/viewInsert.php';
@@ -55,10 +55,10 @@ class ControllerPatient {
 
  // Affiche un formulaire pour récupérer les informations d'un nouveau patient.
  // La clé est gérée par le systeme et pas par l'internaute
- public static function patientCreated() {
+ public static function patientAdded() {
   // ajouter une validation des informations du formulaire
   $results = ModelPatient::insert(
-      htmlspecialchars($_GET['cru']), htmlspecialchars($_GET['annee']), htmlspecialchars($_GET['degre'])
+      htmlspecialchars($_GET['nom']), htmlspecialchars($_GET['prenom']), htmlspecialchars($_GET['adresse'])
   );
   // ----- Construction chemin de la vue
   include 'config.php';

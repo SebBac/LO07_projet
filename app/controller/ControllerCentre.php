@@ -56,7 +56,6 @@ class ControllerCentre {
   $vue = $root . '/app/view/centre/viewInserted.php';
   require ($vue);
  }
- */
 }
 ?>
 <!-- ----- fin ControllerCentre -->
