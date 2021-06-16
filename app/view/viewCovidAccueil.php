@@ -1,17 +1,17 @@
  
 <!-- ----- debut de la page covid acceuil -->
-<?php include 'fragment/fragmentCaveHeader.html'; ?>
+<?php include 'fragment/fragmentCovidHeader.html'; ?>
 <body>
   <div class="container">
     <?php
-    include 'fragment/fragmentCaveMenu.html';
-    include 'fragment/fragmentCaveJumbotron.html';
+    include 'fragment/fragmentCovidMenu.html';
+    include 'fragment/fragmentCovidJumbotron.html';
     ?>
   </div>   
   
   
   <?php
-  include 'fragment/fragmentCaveFooter.html';
+  include 'fragment/fragmentCovidFooter.html';
   ?>
 
   <!-- ----- fin de la page covid acceuil -->

@@ -1,7 +1,6 @@
 
 <!-- ----- debut ControllerCovid -->
 <?php
-require_once '../model/ModelPatient.php';
 
 class ControllerCovid {
  // --- page d'acceuil
@@ -16,5 +15,3 @@ class ControllerCovid {
  
 ?>
 <!-- ----- fin ControllerCovid -->
-
-
