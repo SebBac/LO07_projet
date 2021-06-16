@@ -10,29 +10,22 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
       <?php
       include $root . '/app/view/fragment/fragmentCovidMenu.html';
       include $root . '/app/view/fragment/fragmentCovidJumbotron.html';
-      
-      $cols = $results[0];
-      $datas = $results[1];
-  
+      echo "<pre>";
+      print_r($results);
+      echo "</pre>";
       ?>
     <table class = "table table-striped table-bordered">
       <thead>
         <tr>
-          <?php
-                foreach ($cols as $attribut){
-                    echo "<th scope = \"col\">$attribut</th>";
-                }
-          ?>
+          <th scope = "col">centre</th>
+          <th scope = "col">vaccin</th>
+          <th scope = "col">doses</th>
         </tr>
       </thead>
       <tbody>
           <?php
-          foreach ($datas as $element) {
-            echo "<tr>";
-                foreach ($element as $value){
-                    echo "<td>$value</td>";
-                }
-            echo "</tr>";
+          foreach ($results[0] as $element) {
+           printf("<tr><td>%s</td><td>%s</td><td>%d</td></tr>", $results[1][$element[0]-1][0], $results[2][$element[0]-1][0], $element[2]);
           }
           ?>
       </tbody>

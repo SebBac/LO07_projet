@@ -47,9 +47,16 @@ class modelStock {
         $query = "select * from stock";
         $statement = $database->prepare($query);
         $statement->execute();
-        $datas = $statement->fetchAll(PDO::FETCH_NUM);
-        $cols = array("centre_id", "vaccin_id", "quantite");
-        return array($cols, $datas);
+        $results1 = $statement->fetchAll(PDO::FETCH_NUM);
+        $query = "SELECT label FROM centre";
+        $statement = $database->prepare($query);
+        $statement->execute();
+        $results2 = $statement->fetchAll(PDO::FETCH_NUM);
+        $query = "SELECT label FROM vaccin";
+        $statement = $database->prepare($query);
+        $statement->execute();
+        $results3 = $statement->fetchAll(PDO::FETCH_NUM);
+        return array($results1, $results2, $results3);
     } catch (PDOException $e) {
         printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
         return NULL;
@@ -62,8 +69,12 @@ class modelStock {
     $query = "SELECT centre_id, SUM(quantite) FROM stock GROUP BY centre_id";
     $statement = $database->prepare($query);
     $statement->execute();
-    $results = $statement->fetchAll(PDO::FETCH_NUM);
-    return $results;
+    $results1 = $statement->fetchAll(PDO::FETCH_NUM);
+    $query = "SELECT label FROM centre";
+    $statement = $database->prepare($query);
+    $statement->execute();
+    $results2 = $statement->fetchAll(PDO::FETCH_NUM);
+    return array($results1, $results2);
     } catch (PDOException $e) {
         printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
         return NULL;
