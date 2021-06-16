@@ -33,6 +33,13 @@ switch ($action) {
         ControllerCentre::$action();
         break;
     
+    case "docuInnov1" :
+    case "docuInnov2" :
+    case "docuInnov3" :
+    case "PVSujet" :
+        ControllerCovid::$action();
+        break;
+        
     case "patientAdd" :
     case "patientAdded" :
     case "patientReadAll" :
@@ -46,7 +53,6 @@ switch ($action) {
         ControllerStock::$action();
         break;
     
-
  // Tache par défaut
  default:
   $action = "covidAccueil";
