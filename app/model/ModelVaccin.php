@@ -100,7 +100,7 @@ class modelVaccin {
   }
  }
 
- public static function insert($label, $dose, $degre) {
+ public static function insert($label, $dose) {
   try {
    $database = Model::getInstance();
 
@@ -112,13 +112,12 @@ class modelVaccin {
    $id++;
 
    // ajout d'un nouveau tuple;
-   $query = "insert into vaccin value (:id, :label, :dose, :degre)";
+   $query = "insert into vaccin value (:id, :label, :dose)";
    $statement = $database->prepare($query);
    $statement->execute([
      'id' => $id,
      'label' => $label,
      'dose' => $dose,
-     'degre' => $degre
    ]);
    return $id;
   } catch (PDOException $e) {

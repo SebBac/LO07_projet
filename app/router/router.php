@@ -21,6 +21,7 @@ $action = htmlspecialchars($param["action"]);
 switch ($action) {
     case "vaccinReadAll" :
     case "vaccinCreate" :
+    case "vaccinCreated" :
     case "vaccinUpdate" :
         ControllerVaccin::$action();
         break;

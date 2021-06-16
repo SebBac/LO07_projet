@@ -15,8 +15,8 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
     <form role="form" method='get' action='router.php'>
       <div class="form-group">
         <input type="hidden" name='action' value='vaccinCreated'>        
-        <label for="id">label : </label><input type="text" name='cru' size='75' value='Champagne de déconfinement'>                           
-        <label for="id">dose : </label><input type="number" name='annee' value='1'>              
+        <label for="id">label : </label><input type="text" name='label' size='75' value='Champagne de déconfinement'>                           
+        <label for="id">dose : </label><input type="number" name='dose' value='1'>              
       </div>
       <p/>
       <button class="btn btn-primary" type="submit">Go</button>
