@@ -22,7 +22,8 @@ switch ($action) {
     case "vaccinReadAll" :
     case "vaccinCreate" :
     case "vaccinCreated" :
-    case "vaccinUpdate" :
+    case "vaccinReadLabel" :
+    case "vaccinUpdated" :
         ControllerVaccin::$action();
         break;
 

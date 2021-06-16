@@ -43,10 +43,10 @@ class modelVaccin {
  
  
 // retourne une liste des id
- public static function getAllId() {
+ public static function getAllLabel() {
   try {
    $database = Model::getInstance();
-   $query = "select id from vaccin";
+   $query = "select label from vaccin";
    $statement = $database->prepare($query);
    $statement->execute();
    $results = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
@@ -126,9 +126,11 @@ class modelVaccin {
   }
  }
 
- public static function update() {
-  echo ("modelVaccin : update() TODO ....");
-  return null;
+ public static function update($label, $doses) {
+     $database = Model::getInstance();
+  $query = "update vaccin set doses=$doses where label=$label";
+        $statement = $database->query($query);
+        return array($label, $doses);
  }
 
  public static function delete() {

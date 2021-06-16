@@ -25,12 +25,12 @@ class ControllerVaccin {
  }
 
  // Affiche un formulaire pour sélectionner un id qui existe
- public static function vaccinReadId() {
-  $results = ModelVaccin::getAllId();
+ public static function vaccinReadLabel() {
+  $results = ModelVaccin::getAllLabel();
 
   // ----- Construction chemin de la vue
   include 'config.php';
-  $vue = $root . '/app/view/vaccin/viewId.php';
+  $vue = $root . '/app/view/vaccin/viewLabel.php';
   require ($vue);
  }
 
@@ -63,6 +63,17 @@ class ControllerVaccin {
   // ----- Construction chemin de la vue
   include 'config.php';
   $vue = $root . '/app/view/vaccin/viewInserted.php';
+  require ($vue);
+ }
+ 
+ public static function vaccinUpdated() {
+  // ajouter une validation des informations du formulaire
+  $results = ModelVaccin::update(
+      htmlspecialchars($_GET['label']), htmlspecialchars($_GET['doses'])
+  );
+  // ----- Construction chemin de la vue
+  include 'config.php';
+  $vue = $root . '/app/view/vaccin/viewUpdated.php';
   require ($vue);
  }
  
