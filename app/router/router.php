@@ -20,7 +20,7 @@ $action = htmlspecialchars($param["action"]);
 // --- Liste des méthodes autorisées
 switch ($action) {
     case "vaccinReadAll" :
-    case "vaccinAdd" :
+    case "vaccinCreate" :
     case "vaccinUpdate" :
         ControllerVaccin::$action();
         break;
