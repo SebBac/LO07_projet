@@ -16,7 +16,7 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
     <form role="form" method='get' action='router.php'>
       <div class="form-group">
         <input type="hidden" name='action' value='vaccinUpdated'>
-        <label for="id">label : </label> <select class="form-control" id='id' name='label' style="width: 100px">
+        <label for="label">label : </label> <select class="form-control" id='label' name='label' style="width: 100px">
             <?php
             foreach ($results as $label) {
              echo ("<option>$label</option>");
@@ -25,7 +25,7 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
         </select>
       </div>
         <div class="form-group">
-        <label for="id">Dose : </label><input type="number" step='any' name='doses' value='11' class="form-control">                
+        <label for="doses">Dose : </label><input type="number" step='any' id="doses" name='doses' value='11' class="form-control">                
       </div>
       
 

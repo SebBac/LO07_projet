@@ -127,10 +127,16 @@ class modelVaccin {
  }
 
  public static function update($label, $doses) {
-     $database = Model::getInstance();
-  $query = "update vaccin set doses=$doses where label=$label";
-        $statement = $database->query($query);
-        return array($label, $doses);
+    try {
+        $database = Model::getInstance();
+        $query = "UPDATE vaccin SET doses = :doses WHERE label = :label";
+        $statement = $database->prepare($query);
+        $statement->execute(["doses" => $doses, "label" => $label]);
+    } catch (PDOException $e) {
+        printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+        return NULL;
+    }
+    return array($label, $doses);
  }
 
  public static function delete() {
