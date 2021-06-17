@@ -49,7 +49,9 @@ switch ($action) {
     
     case "stockReadAll" :
     case "stockReadGlobal" :
-    case "stockAddVaccin" :
+    case "stockChooseCenter" :
+    case "stockGiveVaccin" :
+    case "stockUpdateVaccin" :
         ControllerStock::$action();
         break;
     
