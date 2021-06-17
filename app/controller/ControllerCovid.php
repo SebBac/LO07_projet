@@ -3,12 +3,21 @@
 <?php
 
 class ControllerCovid {
+ // --- page d'acceuil
+ public static function covidAccueil() {
+  include 'config.php';
+  $vue = $root . '/app/view/viewCovidAccueil.php';
+  if (DEBUG)
+   echo ("ControllerCovid : covidAccueil : vue = $vue");
+  require ($vue);
+ }
+    
  // --- page Documentation Innovation 1
  public static function docuInnov1() {
   include 'config.php';
   $vue = $root . '/app/view/documentation/viewDocuInnov1.php';
   if (DEBUG)
-   echo ("ControllerDocumentation : DocuInnov1 : vue = $vue");
+   echo ("ControllerCovid : DocuInnov1 : vue = $vue");
   require ($vue);
  }
  
@@ -17,7 +26,7 @@ class ControllerCovid {
   include 'config.php';
   $vue = $root . '/app/view/documentation/viewDocuInnov2.php';
   if (DEBUG)
-   echo ("ControllerDocumentation : DocuInnov2 : vue = $vue");
+   echo ("ControllerCovid : DocuInnov2 : vue = $vue");
   require ($vue);
  }
  
@@ -26,7 +35,7 @@ class ControllerCovid {
   include 'config.php';
   $vue = $root . '/app/view/documentation/viewDocuInnov3.php';
   if (DEBUG)
-   echo ("ControllerDocumentation : DocuInnov3 : vue = $vue");
+   echo ("ControllerCovid : DocuInnov3 : vue = $vue");
   require ($vue);
  }
  
@@ -35,7 +44,7 @@ class ControllerCovid {
   include 'config.php';
   $vue = $root . '/app/view/documentation/viewPVSujet.php';
   if (DEBUG)
-   echo ("ControllerDocumentation : PVSujet : vue = $vue");
+   echo ("ControllerCovid : PVSujet : vue = $vue");
   require ($vue);
  }
 }

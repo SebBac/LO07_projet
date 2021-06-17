@@ -4,6 +4,7 @@
 require ('../controller/ControllerCentre.php');
 require ('../controller/ControllerCovid.php');
 require ('../controller/ControllerPatient.php');
+require ('../controller/ControllerRDV.php');
 require ('../controller/ControllerStock.php');
 require ('../controller/ControllerVaccin.php');
 
@@ -41,10 +42,14 @@ switch ($action) {
         break;
         
     case "patientReadAll" :
-    case "patientReadId" :
     case "patientAdd" :
     case "patientAdded" :
         ControllerPatient::$action();
+        break;
+    
+    case "RDVChoosePatient" :
+    case "getRDVpatient" :
+        ControllerRDV::$action();
         break;
     
     case "stockReadAll" :

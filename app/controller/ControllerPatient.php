@@ -15,16 +15,6 @@ class ControllerPatient {
   require ($vue);
  }
 
- // Affiche un formulaire pour sélectionner un id qui existe
- public static function patientReadId() {
-  $results = ModelPatient::getAllId();
-
-  // ----- Construction chemin de la vue
-  include 'config.php';
-  $vue = $root . '/app/view/patient/viewId.php';
-  require ($vue);
- }
-
  // Affiche le formulaire de creation d'un patient
  public static function patientAdd() {
   // ----- Construction chemin de la vue

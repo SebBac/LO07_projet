@@ -48,6 +48,7 @@ class ControllerStock {
     require ($vue);
  }
  
+ // --- attribue les vaccins au centre choisi
  public static function stockUpdateVaccin(){
     $centre_id = $_GET["centre_id"];
     $list_quantite = 0;
