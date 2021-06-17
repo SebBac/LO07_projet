@@ -66,7 +66,7 @@ class modelStock {
  public static function getGlobal() {
     try {
     $database = Model::getInstance();
-    $query = "SELECT centre_id, SUM(quantite) FROM stock GROUP BY centre_id";
+    $query = "SELECT centre_id, SUM(quantite) FROM stock GROUP BY centre_id ORDER BY SUM(quantite) DESC";
     $statement = $database->prepare($query);
     $statement->execute();
     $results1 = $statement->fetchAll(PDO::FETCH_NUM);
