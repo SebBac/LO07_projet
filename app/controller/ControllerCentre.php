@@ -15,27 +15,6 @@ class ControllerCentre {
   require ($vue);
  }
 
- // Affiche un formulaire pour sélectionner un id qui existe
- public static function centreReadId() {
-  $results = ModelCentre::getAllId();
-
-  // ----- Construction chemin de la vue
-  include 'config.php';
-  $vue = $root . '/app/view/centre/viewId.php';
-  require ($vue);
- }
-
- // Affiche un centre particulier (id)
- public static function centreReadOne() {
-  $centre_id = $_GET['id'];
-  $results = ModelCentre::getOne($centre_id);
-
-  // ----- Construction chemin de la vue
-  include 'config.php';
-  $vue = $root . '/app/view/centre/viewAll.php';
-  require ($vue);
- }
-
  // Affiche le formulaire de creation d'un centre
  public static function centreAdd() {
   // ----- Construction chemin de la vue

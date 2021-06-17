@@ -4,15 +4,6 @@
 require_once '../model/ModelStock.php';
 
 class ControllerStock {
- // --- page d'acceuil
- public static function caveAccueil() {
-  include 'config.php';
-  $vue = $root . '/app/view/viewCovidAccueil.php';
-  if (DEBUG)
-   echo ("ControllerStock : covidAccueil : vue = $vue");
-  require ($vue);
- }
-
  // --- Liste des stocks de chaque vaccin dans chaque centre
  public static function stockReadAll() {
   $results = ModelStock::getAll();
@@ -58,10 +49,9 @@ class ControllerStock {
  }
  
  public static function stockUpdateVaccin(){
-    $centre_id = 0;
-    $list_vaccin_id = 0;
+    $centre_id = $_GET["centre_id"];
     $list_quantite = 0;
-    $results = modelVaccin::update($centre_id, $list_vaccin_id, $list_quantite);
+    $results = modelVaccin::update($centre_id, $list_quantite);
     include 'config.php';
     $vue = $root . '/app/view/stock/viewUpdatedVaccin.php';
     if (DEBUG)

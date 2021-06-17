@@ -4,15 +4,6 @@
 require_once '../model/ModelPatient.php';
 
 class ControllerPatient {
- // --- page d'acceuil
- public static function caveAccueil() {
-  include 'config.php';
-  $vue = $root . '/app/view/viewCovidAccueil.php';
-  if (DEBUG)
-   echo ("ControllerPatient : covidAccueil : vue = $vue");
-  require ($vue);
- }
-
  // --- Liste des patients
  public static function patientReadAll() {
   $results = ModelPatient::getAll();
@@ -31,17 +22,6 @@ class ControllerPatient {
   // ----- Construction chemin de la vue
   include 'config.php';
   $vue = $root . '/app/view/patient/viewId.php';
-  require ($vue);
- }
-
- // Affiche un patient particulier (id)
- public static function patientReadOne() {
-  $patient_id = $_GET['id'];
-  $results = ModelPatient::getOne($patient_id);
-
-  // ----- Construction chemin de la vue
-  include 'config.php';
-  $vue = $root . '/app/view/patient/viewAll.php';
   require ($vue);
  }
 

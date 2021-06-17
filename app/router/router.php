@@ -20,16 +20,16 @@ $action = htmlspecialchars($param["action"]);
 // --- Liste des méthodes autorisées
 switch ($action) {
     case "vaccinReadAll" :
+    case "vaccinReadLabel" :
     case "vaccinCreate" :
     case "vaccinCreated" :
-    case "vaccinReadLabel" :
     case "vaccinUpdated" :
         ControllerVaccin::$action();
         break;
 
+    case "centreReadAll" :
     case "centreAdd" :
     case "centreAdded" :
-    case "centreReadAll" :
         ControllerCentre::$action();
         break;
     
@@ -40,10 +40,10 @@ switch ($action) {
         ControllerCovid::$action();
         break;
         
-    case "patientAdd" :
-    case "patientAdded" :
     case "patientReadAll" :
     case "patientReadId" :
+    case "patientAdd" :
+    case "patientAdded" :
         ControllerPatient::$action();
         break;
     

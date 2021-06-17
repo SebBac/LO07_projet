@@ -9,13 +9,15 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
       <?php
       include $root . '/app/view/fragment/fragmentCovidMenu.html';
       include $root . '/app/view/fragment/fragmentCovidJumbotron.html';
+      $info_centre = explode(" | ", $_GET["centre"])
       ?>
 
     <form role="form" method='get' action='router.php'>
       <div class="form-group">
         <input type="hidden" name='action' value='stockUpdateVaccin'>
-            <?php
-            printf("Centre choisi = %s", $_GET["centre"]);
+       <?php 
+            printf("<input type=\"hidden\" name='centre_id' value='%d'>\n", $info_centre[0]);
+            printf("Centre choisi = %s\n", $info_centre[1]);
             $i = 0;
             foreach ($results as $element) {
                 echo "<div class=\"form-group\">\n" ;

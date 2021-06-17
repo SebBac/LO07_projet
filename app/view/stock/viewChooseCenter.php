@@ -17,7 +17,7 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
         <label for="centre">Centre : </label> <select class="form-control" id='centre' name='centre' style="width: 500px">
             <?php
             foreach ($results as $element) {
-             printf("<option value=\"%d\">%s</option>", $element->getId(), $element->getLabel());
+             printf("<option>%d | %s</option>", $element->getId(), $element->getLabel());
             }
             ?>
         </select>

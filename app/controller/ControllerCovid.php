@@ -3,15 +3,6 @@
 <?php
 
 class ControllerCovid {
- // --- page d'acceuil
- public static function covidAccueil() {
-  include 'config.php';
-  $vue = $root . '/app/view/viewCovidAccueil.php';
-  if (DEBUG)
-   echo ("ControllerPatient : covidAccueil : vue = $vue");
-  require ($vue);
- }
- 
  // --- page Documentation Innovation 1
  public static function docuInnov1() {
   include 'config.php';

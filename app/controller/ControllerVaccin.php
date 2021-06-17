@@ -4,15 +4,6 @@
 require_once '../model/ModelVaccin.php';
 
 class ControllerVaccin {
- // --- page d'acceuil
- public static function covidAccueil() {
-  include 'config.php';
-  $vue = $root . '/app/view/viewCovidAccueil.php';
-  if (DEBUG)
-   echo ("ControllerVaccin : covidAccueil : vue = $vue");
-  require ($vue);
- }
-
  // --- Liste des vaccins
  public static function vaccinReadAll() {
   $results = ModelVaccin::getAll();
@@ -31,17 +22,6 @@ class ControllerVaccin {
   // ----- Construction chemin de la vue
   include 'config.php';
   $vue = $root . '/app/view/vaccin/viewLabel.php';
-  require ($vue);
- }
-
- // Affiche un vaccin particulier (id)
- public static function vaccinReadOne() {
-  $vaccin_id = $_GET['id'];
-  $results = ModelVaccin::getOne($vaccin_id);
-
-  // ----- Construction chemin de la vue
-  include 'config.php';
-  $vue = $root . '/app/view/vaccin/viewAll.php';
   require ($vue);
  }
 
