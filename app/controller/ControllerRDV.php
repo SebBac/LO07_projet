@@ -45,15 +45,13 @@ class ControllerRDV {
   require ($vue);
  }
  
- public static function defVaccinationpatient() {
+public static function defVaccinationpatient() {
      $centre_nom=$_GET["centre_choix"];
      $patient = explode (" | ", $_GET["patient"]);
      $patient_id=$patient[0];
-     $results = ModelRDV::getPatientHighInjectionRDV($patient_id);
-     $vaccin_id=$results[0][3];
+     $results = ModelRDV::getPatientRDV($patient_id);
      $centre=ModelCentre::getOne($centre_nom);
-     $centre_id=$centre[0]->getId();
-     /*foreach ($centre as $element) {
+     foreach ($centre as $element) {
          $centre_id=$element->getId();
      }
      $etat_stock=ModelStock::getOneId($centre_id);
@@ -75,15 +73,12 @@ class ControllerRDV {
                 $vaccin_id=$element->getVaccin_id();
             }
         }
-    }*/
-    $max2=0;
-    if(isset($results[0])){
-    $patate=ModelRDV::insert($centre_id, $patient_id, $results[0][4]+1, $vaccin_id);
-        }
-    else{
+    }
         $patate=ModelRDV::insert($centre_id, $patient_id, 1, $vaccin_id);
     }
     $patate2=ModelStock::updateStock($centre_id, $vaccin_id, -1);
+    
+    
     
     
     //
