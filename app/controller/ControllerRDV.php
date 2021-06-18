@@ -24,6 +24,9 @@ class ControllerRDV {
   $vaccin = modelVaccin::getAll();
   if(isset($results[0])){
     foreach ($results as $element) {
+        if($element->getInjection()>=1 && $element->getVaccin_id()!=4){
+            //choix d'un centre ayant le vaccin du premier injection
+        }
         
             }
         }
@@ -43,6 +46,7 @@ class ControllerRDV {
  public static function defVaccinationpatient() {
      $centre_nom=$_GET["centre_choix"];
      $patient = explode (" | ", $_GET["patient"]);
+     $patient_id=$patient[0];
      $centre=ModelCentre::getOne($centre_nom);
      foreach ($centre as $element) {
          $centre_id=$element->getId();
@@ -57,7 +61,18 @@ class ControllerRDV {
             }
         }
     }
-    //ModelRDV::insert($centre_id, $patient_id, $injection, $vaccin_id);
+    $results = ModelRDV::getPatientRDV($patient_id);
+    if(isset($results[0])){
+    foreach ($results as $element) {
+        $patate=ModelRDV::insert($centre_id, $patient_id, $element->getInjection()+1, $vaccin_id);
+            }
+        }
+    else{
+        $patate=ModelRDV::insert($centre_id, $patient_id, 1, $vaccin_id);
+    }
+    
+    
+    //
      
      // ----- Construction chemin de la vue
     include 'config.php';
