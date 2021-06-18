@@ -57,7 +57,17 @@ class ControllerRDV {
          $centre_id=$element->getId();
      }
      $etat_stock=ModelStock::getOneId($centre_id);
-     $max=0;
+    $max2=0;
+    if(isset($results[0])){
+    foreach ($results as $element) {
+        if($element->getInjection()>$max2){
+            $injection=$element->getInjection();
+        }
+    }
+    $patate=ModelRDV::insert($centre_id, $patient_id, $injection+1, $results[0]->getVaccin_id());
+        }
+    else{
+        $max=0;
     foreach($etat_stock as $categorie){
         foreach($categorie as $element){
             if($element->getQuantite()>$max){
