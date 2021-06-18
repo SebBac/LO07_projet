@@ -29,14 +29,20 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
             </select>
             <?php
             $i = 0;
+            $vaccinAffiche = false;
             foreach ($stock_centre1[0] as $element) {
-                echo "<div class=\"form-group\">\n" ;
-                printf ("   <label for=\"doses%d\">Doses de %s à attribuer /%d doses : </label><input type=\"number\" 
-                 step='any' id=\"doses%d\" name='doses%d' value='0' min='0' max='%d' class=\"form-control\">\n"
-                , $i, $vaccin[$element->getVaccin_id()-1]->getLabel(), $element->getQuantite(), $i, $i, $element->getQuantite());               
-                echo "</div>\n" ;
-                $i++;
+                if($element->getQuantite()!=0){
+                    echo "<div class=\"form-group\">\n" ;
+                    printf ("   <label for=\"doses%d\">Doses de %s à attribuer /%d doses : </label><input type=\"number\" 
+                     step='any' id=\"doses%d\" name='doses%d' value='0' min='0' max='%d' class=\"form-control\">\n"
+                    , $i, $vaccin[$element->getVaccin_id()-1]->getLabel(), $element->getQuantite(), $i, $i, $element->getQuantite());               
+                    echo "</div>\n" ;
+                    $i++;
+                    $vaccinAffiche = true;
+                }
             }
+            if($vaccinAffiche == false){printf("<br>Il n'y a aucun stock disponible de vaccin dans"
+                    . " le centre %s", $info_centre[1]);}
             ?>
         </select>
       </div>
