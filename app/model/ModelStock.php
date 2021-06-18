@@ -52,7 +52,7 @@ class modelStock {
         $statement = $database->prepare($query);
         $statement->execute();
         $results2 = $statement->fetchAll(PDO::FETCH_NUM);
-        $query = "SELECT label FROM vaccin";
+        $query = "SELECT label FROM vaccin ORDER BY id";
         $statement = $database->prepare($query);
         $statement->execute();
         $results3 = $statement->fetchAll(PDO::FETCH_NUM);
@@ -81,8 +81,23 @@ class modelStock {
     }
  }
 
+ public static function isStockDefined($centre_id, $vaccin_id){
+    try {
+        $database = Model::getInstance();
+        $query = "SELECT * FROM stock WHERE centre_id = :centre_id AND vaccin_id = :vaccin_id";
+        $statement = $database->prepare($query);
+        $statement->execute(["centre_id" => $centre_id, "vaccin_id" => $vaccin_id]);
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelRDV");
+        if($results == NULL){return false;}
+        else{return true;}
+    } catch (PDOException $e) {
+        printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+        return NULL;
+    }
+ }
+ 
  public static function updateStock($centre_id, $vaccin_id, $doses) {
-     try {
+    try {
         $database = Model::getInstance();
         $query = "UPDATE vaccin SET doses = doses - :doses WHERE id = :vaccin_id";
         $statement = $database->prepare($query);
@@ -96,6 +111,19 @@ class modelStock {
     }
     return 1;
  }
+ 
+ public static function insertStock($centre_id, $vaccin_id, $doses) {
+    try {
+        $database = Model::getInstance();
+        $query = "INSERT INTO stock VALUE (:centre_id, :vaccin_id, :doses)";
+        $statement = $database->prepare($query);
+        $statement->execute(["centre_id" => $centre_id, "vaccin_id" => $vaccin_id, "doses" => $doses]);
+    } catch (PDOException $e) {
+        printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+        return NULL;
+    }
+ }
+ 
 }
 ?>
 <!-- ----- fin modelPatient -->

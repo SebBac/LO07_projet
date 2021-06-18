@@ -22,7 +22,7 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
       <tbody>
           <?php
           foreach ($results[0] as $element) { if($element[2]!=0) {
-           printf("<tr><td>%s</td><td>%s</td><td>%d</td></tr>", $results[1][$element[0]-1][0], $results[2][$element[0]-1][0], $element[2]);
+           printf("<tr><td>%s</td><td>%s</td><td>%d</td></tr>", $results[1][$element[0]-1][0], $results[2][$element[1]-1][0], $element[2]);
           }
           }
           ?>

@@ -61,8 +61,12 @@ class ControllerStock {
     }
     for ($i=0 ; $i< sizeof($list_quantite) ; $i++){
         if ($list_quantite[$i] > 0){
-            $result = modelStock::updateStock($centre_id, $vaccin[$i]->getId(), $list_quantite[$i]);
-            if($result == null){echo "ERREUR $i";}
+            if (modelStock::isStockDefined($centre_id, $vaccin[$i]->getId())){
+                modelStock::updateStock($centre_id, $vaccin[$i]->getId(), $list_quantite[$i]);
+            }
+            else{
+                modelStock::insertStock($centre_id, $vaccin[$i]->getId(), $list_quantite[$i]);
+            }
         }
     }
     include 'config.php';
