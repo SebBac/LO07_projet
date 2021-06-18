@@ -63,6 +63,23 @@ class modelRDV {
         return NULL;
     }
  }
+ 
+  
+// retourne une liste des id
+ /*public static function get_Injection($patient_id) {
+  try {
+   $database = Model::getInstance();
+   $query = "select injection from rendezvous WHERE patient_id = :patient_id";
+   $statement = $database->prepare($query);
+   $statement->execute();
+   $results = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+   return $results;
+  } catch (PDOException $e) {
+   printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+   return NULL;
+  }
+ }*/
+ 
 }
 ?>
 <!-- ----- fin modelRDV -->
