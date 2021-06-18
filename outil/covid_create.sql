@@ -15,7 +15,7 @@ create table if not exists vaccin (
 ) ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
 
 
--- table centre permet de mmoriser les centres de vaccination existants
+-- table centre permet de mémoriser les centres de vaccination existants
 
 create table if not exists centre (
   id integer unsigned not null,
