@@ -21,8 +21,7 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
         </tr>
       </thead>
       <tbody>
-          <?php
-          // La liste des vins est dans une variable $results             
+          <?php           
           foreach ($results as $element) {
            printf("<tr><td>%d</td><td>%s</td><td>%s</td></tr>", $element->getId(), 
              $element->getLabel(), $element->getAdresse());

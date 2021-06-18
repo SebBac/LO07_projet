@@ -14,7 +14,7 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
     <form role="form" method='get' action='router.php'>
       <div class="form-group">
         <input type="hidden" name='action' value='getRDVpatient'>
-        <label for="centre">Centre : </label> <select class="form-control" id='centre' name='centre' style="width: 500px">
+        <label for="patient">Patient : </label> <select class="form-control" id='patient' name='patient' style="width: 500px">
             <?php
             foreach ($results as $element) {
              printf("<option>%d | %s %s</option>", $element->getId(), $element->getNom(), $element->getPrenom());

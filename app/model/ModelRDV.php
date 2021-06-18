@@ -50,10 +50,14 @@ class modelRDV {
   return $this->vaccin_id;
  }
 
- public static function getPatientRDV() {
+ public static function getPatientRDV($patient_id) {
     try {
-        $result = 0;
-        return $result;
+        $database = Model::getInstance();
+        $query = "SELECT * FROM rendezvous WHERE patient_id = :patient_id";
+        $statement = $database->prepare($query);
+        $statement->execute(['patient_id' => $patient_id]);
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, ModelRDV);
+        return $results;
     } catch (PDOException $e) {
         printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
         return NULL;

@@ -18,7 +18,10 @@ class ControllerRDV {
     
     
  public static function getRDVpatient() {
-  $results = ModelRDV::getPatientRDV();
+  $patient = explode (" | ", $_GET["patient"]);
+  $results = ModelRDV::getPatientRDV($patient[0]);
+  $centre = modelCentre::getAll();
+  $vaccin = modelVaccin::getAll();
   // ----- Construction chemin de la vue
   include 'config.php';
   $vue = $root . '/app/view/RDV/viewRDVpatient.php';
