@@ -35,8 +35,8 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
               echo'<h3>Selectionner un centre de vaccination</h3>
                   <form role="form" method="get" action="router.php">
                     <div class="form-group">
-                      <input type="hidden" name="action" value="#">
-                      <label for="patient">Centre : </label> <select class="form-control" id="patient" name="centre_choix" style="width: 500px">';
+                      <input type="hidden" name="action" value="defVaccinationpatient">
+                      <label for="centre">Centre : </label> <select class="form-control" id="centre" name="centre_choix" style="width: 500px">';
                           
                           foreach ($centre_choix[0] as $element) {
                            printf("<option>%s</option>", $centre_choix[1][$element[0]-1][0]);
@@ -49,22 +49,6 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
                     <button class="btn btn-primary" type="submit">Submit form</button>
                   </form>
                   <p/>';
-              /*echo'<table class = "table table-striped table-bordered">
-                  <thead>
-                  <tr>
-                    <th scope = "col">centre</th>
-                    <th scope = "col">doses</th>
-                  </tr>
-                </thead>
-                <tbody>';
-                    
-                    // La liste des vins est dans une variable $results             
-                    foreach ($centre_choix[0] as $element) {
-                     printf("<tr><td>%s</td><td>%d</td></tr>", $centre_choix[1][$element[0]-1][0], $element[1]);
-                    }
-                    
-                echo'</tbody>
-              </table>';*/
           }
           
           ?>

@@ -59,6 +59,7 @@ switch ($action) {
     case "RDVChoosePatient" :
     case "getRDVpatient" :
     case "getNBvaccine" :
+    case "defVaccinationpatient" :
         ControllerRDV::$action();
         break;
     

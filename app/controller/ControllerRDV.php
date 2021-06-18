@@ -32,13 +32,28 @@ class ControllerRDV {
         $vaccination_necessaire=1;
         $centre_choix=ModelStock::getGlobalDispo();
     }
-    $compt=0;
   
   
   // ----- Construction chemin de la vue
   include 'config.php';
   $vue = $root . '/app/view/RDV/viewRDVpatient.php';
   require ($vue);
+ }
+ 
+ public static function defVaccinationpatient() {
+     $centre_nom=$_GET["centre_choix"];
+     $centre=ModelCentre::getOne($centre_nom);
+     foreach ($centre as $element) {
+         $centre_id=$element->getId();
+     } 
+    //$centre_id=$centre[0];
+     $etat_stock=ModelStock::getOneId($centre_id);
+     
+     // ----- Construction chemin de la vue
+    include 'config.php';
+    $vue = $root . '/app/view/RDV/viewRDVinjectionChoisi.php';
+    require ($vue);
+     
  }
  
  

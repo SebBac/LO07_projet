@@ -100,6 +100,37 @@ class modelCentre {
    return -1;
   }
  }
+ 
+ 
+ public static function getOne($label) {
+  try {
+   $database = Model::getInstance();
+   $query = "select * from centre where label = :label";
+   $statement = $database->prepare($query);
+   $statement->execute([
+     'label' => $label
+   ]);
+   $results = $statement->fetchAll(PDO::FETCH_CLASS, "modelCentre");
+   return $results;
+  } catch (PDOException $e) {
+   printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+   return NULL;
+  }
+ }
+ 
+ /*public static function getIDfromLabel($label){
+     try {
+   $database = Model::getInstance();
+   $query = "SELECT id FROM centre WHERE label = :label";
+   $statement = $database->prepare($query);
+   $statement->execute();
+   $results = $statement->fetch();
+   return $results;
+  } catch (PDOException $e) {
+   printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+   return NULL;
+  }
+ }*/
 
 }
 ?>
