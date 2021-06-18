@@ -105,6 +105,19 @@ class modelRDV {
   }
  }
  
+ public static function getNumVaccine($vaccin_id){
+    try {
+        $database = Model::getInstance();
+        $query = "SELECT DISTINCT patient_id FROM rendezvous WHERE vaccin_id = :vaccin_id";
+        $statement = $database->prepare($query);
+        $statement->execute(['vaccin_id' => $vaccin_id]);
+        $results = $statement->fetchAll(PDO::FETCH_NUM);
+        return $results;
+    } catch (PDOException $e) {
+        printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+        return NULL;
+    }
+ }
   
 // retourne une liste des id
  /*public static function get_Injection($patient_id) {

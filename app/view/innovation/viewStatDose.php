@@ -10,21 +10,21 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
       <?php
       include $root . '/app/view/fragment/fragmentCovidMenu.html';
       include $root . '/app/view/fragment/fragmentCovidJumbotron.html';
-      printf("<h2>Dossier </h2>");
       ?>
     <table class = "table table-striped table-bordered">
       <thead>
         <tr>
-          <th scope = "col">Total de patients</th>
-          <th scope = "col">Patients complétements vaccinées</th>
-          <th scope = "col">Patients ayant commencé leur vaccination</th>
-          <th scope = "col">Patients en attente d'une 1ère injection</th>
+          <th scope = "col">Vaccin</th>
+          <th scope = "col">Nombre de patients ayant reçu au moins une dose du vaccin</th>
         </tr>
       </thead>
       <tbody>
           <?php
-              printf("<tr><td>%d</td><td>%d</td><td>%d</td><td>%d</td></tr>",
-               $numVaccine + $numEnCours + $numNonVaccine, $numVaccine, $numEnCours, $numNonVaccine);
+               $i = 0;
+               foreach ($vaccin as $element){
+                    printf("<tr><td>%s</td><td>%d</td></tr>", $element->getLabel(), $numVaccine[$i]);
+                    $i++;
+               }
           ?>
       </tbody>
     </table>
