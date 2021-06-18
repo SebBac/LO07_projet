@@ -133,7 +133,37 @@ class ControllerRDV {
   require ($vue);
  }
  
- 
+ public static function getStatPatient(){
+    $patient = ModelPatient::getAllId();
+    $vaccin = modelVaccin::getAll();
+    $numVaccine = 0;
+    $numEnCours = 0;
+    $numNonVaccine = 0;
+    echo "<pre>";
+       print_r($patient);
+       echo "</pre>";
+    foreach ($patient as $patient_id) {
+       $result = modelRDV::getPatientHighInjectionRDV($patient_id);
+       echo "<pre>";
+       print_r($result);
+       echo "</pre>";
+       if(isset($result[0][0])){
+           if($result[0][4] == $vaccin[$result[0][3]-1]->getDose()){
+               $numVaccine++;
+           }
+           else{
+               $numEnCours++;
+           }
+       }
+       else{
+           $numNonVaccine++;
+       }
+    }
+    // ----- Construction chemin de la vue
+    include 'config.php';
+    $vue = $root . '/app/view/innovation/viewStatVaccination.php';
+    require ($vue);
+ }
 }
 ?>
 <!-- ----- fin ControllerRDV -->

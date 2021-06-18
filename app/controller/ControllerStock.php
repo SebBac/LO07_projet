@@ -46,7 +46,7 @@ class ControllerStock {
  
  // --- Liste vaccins disponibles
  public static function stockGiveVaccin(){
-    $results = modelVaccin::getAll();
+    $results = modelVaccin::getAllLabel();
     // ----- Construction chemin de la vue
     include 'config.php';
     $vue = $root . '/app/view/stock/viewGiveVaccin.php';

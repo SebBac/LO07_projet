@@ -53,10 +53,24 @@ class modelRDV {
  public static function getPatientRDV($patient_id) {
     try {
         $database = Model::getInstance();
-        $query = "SELECT * FROM rendezvous WHERE patient_id = :patient_id";
+        $query = "SELECT * FROM rendezvous WHERE patient_id = :patient_id ORDER BY injection";
         $statement = $database->prepare($query);
         $statement->execute(['patient_id' => $patient_id]);
         $results = $statement->fetchAll(PDO::FETCH_CLASS, "modelRDV");
+        return $results;
+    } catch (PDOException $e) {
+        printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+        return NULL;
+    }
+ }
+ 
+ public static function getPatientHighInjectionRDV($patient_id) {
+    try {
+        $database = Model::getInstance();
+        $query = "SELECT *,MAX(injection) FROM rendezvous WHERE patient_id = :patient_id";
+        $statement = $database->prepare($query);
+        $statement->execute(['patient_id' => $patient_id]);
+        $results = $statement->fetchAll(PDO::FETCH_NUM);
         return $results;
     } catch (PDOException $e) {
         printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
