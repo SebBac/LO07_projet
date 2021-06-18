@@ -22,7 +22,7 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
       </thead>
       <tbody>
           <?php
-                echo '<pre>';
+          /*      echo '<pre>';
                 print_r($nbvaccinee);
                 echo '</pre>';
           $totalement=0;
@@ -39,9 +39,9 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
               elseif($value===0){
                   $attente=$attente+1;
               }
-          }
-          
-              printf("<tr><td>%d</td><td>%d</td><td>%d</td></tr>", $totalement, $en_cours, $attente);
+          }*/
+
+              printf("<tr><td>%d</td><td>%d</td><td>%d</td></tr>", $numVaccine, $numEnCours, $numNonVaccine);
 
           ?>
       </tbody>
