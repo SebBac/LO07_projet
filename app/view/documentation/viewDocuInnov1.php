@@ -17,7 +17,16 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
               <h2 class="panel-title">Documentation innovation 1</h2>
           </div>
           <div class="panel-body">
-                Blablabla...
+                <h4>L'innovation 1 nous donne des statistiques sur l'état de vaccination des patients :</h4>
+                On obtient un tableau avec :
+                <ul>
+                    <li>Le nombre total de patients</li>
+                    <li>Le nombre de patients complétements vaccinés</li>
+                    <li>Le nombre de patients ayant commencé leur vaccination,
+                     <em>c'est-à-dire le nombre de patients ayant eu au moins une injection
+                     mais n'ayant pas de reçu toutes les doses de leur vaccin</em></li>
+                    <li>Le nombre de patients en attente de leur 1ère injection</li>
+                </ul>
           </div>
       </div>
       
