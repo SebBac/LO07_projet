@@ -80,6 +80,24 @@ class modelStock {
         return NULL;
     }
  }
+ 
+  public static function getGlobalDispo() {
+    try {
+    $database = Model::getInstance();
+    $query = "SELECT centre_id, SUM(quantite) FROM stock WHERE quantite>0 GROUP BY centre_id ORDER BY SUM(quantite) DESC";
+    $statement = $database->prepare($query);
+    $statement->execute();
+    $results1 = $statement->fetchAll(PDO::FETCH_NUM);
+    $query = "SELECT label FROM centre";
+    $statement = $database->prepare($query);
+    $statement->execute();
+    $results2 = $statement->fetchAll(PDO::FETCH_NUM);
+    return array($results1, $results2);
+    } catch (PDOException $e) {
+        printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+        return NULL;
+    }
+ }
 
  public static function isStockDefined($centre_id, $vaccin_id){
     try {

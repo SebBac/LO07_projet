@@ -22,6 +22,19 @@ class ControllerRDV {
   $results = ModelRDV::getPatientRDV($patient[0]);
   $centre = modelCentre::getAll();
   $vaccin = modelVaccin::getAll();
+  if(isset($results[0])){
+    foreach ($results as $element) {
+        
+            }
+        }
+    else{
+        //devons choisir centre et vaccin
+        $vaccination_necessaire=1;
+        $centre_choix=ModelStock::getGlobalDispo();
+    }
+    $compt=0;
+  
+  
   // ----- Construction chemin de la vue
   include 'config.php';
   $vue = $root . '/app/view/RDV/viewRDVpatient.php';
