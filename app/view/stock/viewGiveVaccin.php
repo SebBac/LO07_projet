@@ -17,6 +17,7 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
         <input type="hidden" name='action' value='stockUpdateVaccin'>
        <?php 
             printf("<input type=\"hidden\" name='centre_id' value='%d'>\n", $info_centre[0]);
+            printf("<input type=\"hidden\" name='centre' value='%s'>\n", $info_centre[1]);
             printf("Centre choisi = %s\n", $info_centre[1]);
             $i = 0;
             foreach ($results as $element) {
