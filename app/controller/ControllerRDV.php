@@ -42,12 +42,22 @@ class ControllerRDV {
  
  public static function defVaccinationpatient() {
      $centre_nom=$_GET["centre_choix"];
+     $patient = explode (" | ", $_GET["patient"]);
      $centre=ModelCentre::getOne($centre_nom);
      foreach ($centre as $element) {
          $centre_id=$element->getId();
-     } 
-    //$centre_id=$centre[0];
+     }
      $etat_stock=ModelStock::getOneId($centre_id);
+     $max=0;
+    foreach($etat_stock as $categorie){
+        foreach($categorie as $element){
+            if($element->getQuantite()>$max){
+                $max=$element->getQuantite();
+                $vaccin_id=$element->getId();
+            }
+        }
+    }
+    //ModelRDV::insert($centre_id, $patient_id, $injection, $vaccin_id);
      
      // ----- Construction chemin de la vue
     include 'config.php';

@@ -43,6 +43,10 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
                           }
                           
                       echo'</select>
+                    
+                      <label for="patient">Pour Patient : </label> <input type="text" class="form-control" id="patient" placeholder="'.$_GET["patient"].'" name="patient" velue="'.$_GET["patient"].'">
+                          
+                      </select>
                     </div>
 
                     <p/>

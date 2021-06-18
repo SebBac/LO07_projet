@@ -64,7 +64,32 @@ class modelRDV {
     }
  }
  
- 
+ public static function insert($centre_id, $patient_id, $injection, $vaccin_id) {
+  try {
+   $database = Model::getInstance();
+
+   // recherche de la valeur de la clé = max(id) + 1
+   /*$query = "select max(id) from centre";
+   $statement = $database->query($query);
+   $tuple = $statement->fetch();
+   $id = $tuple['0'];
+   $id++;*/
+
+   // ajout d'un nouveau tuple;
+   $query = "insert into rendezvous value (:centre_id, :patient_id, :injection, :vaccin_id)";
+   $statement = $database->prepare($query);
+   $statement->execute([
+     'centre_id' => $centre_id,
+     'patient_id' => $patient_id,
+     'injection' => $injection,
+     'vaccin_id' => $vaccin_id,
+   ]);
+   
+  }catch (PDOException $e) {
+   printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+   return -1;
+  }
+ }
  
   
 // retourne une liste des id

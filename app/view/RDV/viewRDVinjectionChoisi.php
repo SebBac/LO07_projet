@@ -23,10 +23,11 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
      echo ("id = " . $_GET['label']);
     }
     
-    foreach ($etat_stock as $value) {
-        echo $value . '<br>';
+    echo '<pre>';
+    print_r($etat_stock);
+    echo '</pre>';
     
-}
+    echo 'quantité max est : '. $max;
 
     echo("</div>");
     
