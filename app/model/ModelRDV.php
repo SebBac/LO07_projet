@@ -64,6 +64,8 @@ class modelRDV {
     }
  }
  
+ 
+ 
   
 // retourne une liste des id
  /*public static function get_Injection($patient_id) {

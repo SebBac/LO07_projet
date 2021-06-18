@@ -31,9 +31,18 @@ class ControllerRDV {
  public static function getNBvaccine() {
      $nbvaccinee=array();
   $patient_id = ModelPatient::getAllId();
-  
   foreach ($patient_id as $value) {
-      $patate=$value->getInjection();
+      $results = ModelRDV::getPatientRDV($value);
+      if(isset($results[0])){
+            foreach ($results as $element) {
+              $patate=$element->getInjection();
+              array_push($nbvaccinee,2);
+            }
+          }
+    else{
+        array_push($nbvaccinee,0);
+    }
+      /*$patate=$value->getInjection();
       
       if(is_array($patate)){
           array_push($nbvaccinee,2);
@@ -43,7 +52,7 @@ class ControllerRDV {
       }
       else{
           array_push($nbvaccinee,0);
-      }
+      }*/
       
       //$results = ModelRDV::get_Injection($value);
       /*if(isset($results[0])){
