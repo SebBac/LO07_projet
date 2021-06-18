@@ -131,9 +131,6 @@ class modelStock {
  public static function updateStock($centre_id, $vaccin_id, $doses) {
     try {
         $database = Model::getInstance();
-        $query = "UPDATE vaccin SET doses = doses - :doses WHERE id = :vaccin_id";
-        $statement = $database->prepare($query);
-        $statement->execute(["doses" => $doses, "vaccin_id" => $vaccin_id]);
         $query = "UPDATE stock SET quantite = quantite + :doses WHERE centre_id = :centre_id AND vaccin_id = :vaccin_id";
         $statement = $database->prepare($query);
         $statement->execute(["doses" => $doses, "centre_id" => $centre_id, "vaccin_id" => $vaccin_id]);
@@ -147,9 +144,6 @@ class modelStock {
  public static function insertStock($centre_id, $vaccin_id, $doses) {
     try {
         $database = Model::getInstance();
-        $query = "UPDATE vaccin SET doses = doses - :doses WHERE id = :vaccin_id";
-        $statement = $database->prepare($query);
-        $statement->execute(["doses" => $doses, "vaccin_id" => $vaccin_id]);
         $query = "INSERT INTO stock VALUE (:centre_id, :vaccin_id, :doses)";
         $statement = $database->prepare($query);
         $statement->execute(["centre_id" => $centre_id, "vaccin_id" => $vaccin_id, "doses" => $doses]);
