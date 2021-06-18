@@ -22,7 +22,7 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
             $i = 0;
             foreach ($results as $element) {
                 echo "<div class=\"form-group\">\n" ;
-                printf ("   <label for=\"doses%d\">Dose de %s à attribuer /%d doses : </label><input type=\"number\" 
+                printf ("   <label for=\"doses%d\">Doses de %s à attribuer /%d doses : </label><input type=\"number\" 
                  step='any' id=\"doses%d\" name='doses%d' value='0' min='0' max='%d' class=\"form-control\">\n"
                 , $i, $element->getLabel(), $element->getDose(), $i, $i, $element->getDose());               
                 echo "</div>\n" ;

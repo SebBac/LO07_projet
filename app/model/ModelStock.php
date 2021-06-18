@@ -80,6 +80,20 @@ class modelStock {
         return NULL;
     }
  }
+ 
+ public static function getOneId($centre_id) {
+    try {
+    $database = Model::getInstance();
+    $query = "SELECT * FROM stock WHERE centre_id = :centre_id";
+    $statement = $database->prepare($query);
+    $statement->execute(["centre_id" => $centre_id]);
+    $results = $statement->fetchAll(PDO::FETCH_CLASS, "modelStock");
+    return array($results);
+    } catch (PDOException $e) {
+        printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+        return NULL;
+    }
+ }
 
  public static function isStockDefined($centre_id, $vaccin_id){
     try {
@@ -115,9 +129,43 @@ class modelStock {
  public static function insertStock($centre_id, $vaccin_id, $doses) {
     try {
         $database = Model::getInstance();
+        $query = "UPDATE vaccin SET doses = doses - :doses WHERE id = :vaccin_id";
+        $statement = $database->prepare($query);
+        $statement->execute(["doses" => $doses, "vaccin_id" => $vaccin_id]);
         $query = "INSERT INTO stock VALUE (:centre_id, :vaccin_id, :doses)";
         $statement = $database->prepare($query);
         $statement->execute(["centre_id" => $centre_id, "vaccin_id" => $vaccin_id, "doses" => $doses]);
+    } catch (PDOException $e) {
+        printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+        return NULL;
+    }
+ }
+ 
+ public static function updateStockFromCenter($centre1_id, $centre2_id,$vaccin_id, $doses) {
+    try {
+        $database = Model::getInstance();
+        $query = "UPDATE stock SET quantite = quantite - :doses WHERE centre_id = :centre1_id AND vaccin_id = :vaccin_id";
+        $statement = $database->prepare($query);
+        $statement->execute(["doses" => $doses, "centre1_id" => $centre1_id, "vaccin_id" => $vaccin_id]);
+        $query = "UPDATE stock SET quantite = quantite + :doses WHERE centre_id = :centre2_id AND vaccin_id = :vaccin_id";
+        $statement = $database->prepare($query);
+        $statement->execute(["doses" => $doses, "centre2_id" => $centre2_id, "vaccin_id" => $vaccin_id]);
+    } catch (PDOException $e) {
+        printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+        return NULL;
+    }
+    return 1;
+ }
+ 
+ public static function insertStockFromCenter($centre1_id, $centre2_id, $vaccin_id, $doses) {
+    try {
+        $database = Model::getInstance();
+        $query = "UPDATE stock SET quantite = quantite - :doses WHERE centre_id = :centre1_id AND vaccin_id = :vaccin_id";
+        $statement = $database->prepare($query);
+        $statement->execute(["doses" => $doses, "centre1_id" => $centre1_id, "vaccin_id" => $vaccin_id]);
+        $query = "INSERT INTO stock VALUE (:centre2_id, :vaccin_id, :doses)";
+        $statement = $database->prepare($query);
+        $statement->execute(["centre2_id" => $centre2_id, "vaccin_id" => $vaccin_id, "doses" => $doses]);
     } catch (PDOException $e) {
         printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
         return NULL;

@@ -18,6 +18,15 @@ parse_str($query_string, $param);
 // --- $action contient le nom de la méthode statique recherchée
 $action = htmlspecialchars($param["action"]);
 
+// Modification du routeur pour prendre en compte l'ensemble des paramètres
+$action = $param['action'];
+
+// --- On supprime l'élément action de la structure
+unset($param['action']);
+
+// --- Tout ce qui reste sont des arguments
+$args = $param;
+
 // --- Liste des méthodes autorisées
 switch ($action) {
     case "vaccinReadAll" :
@@ -58,7 +67,9 @@ switch ($action) {
     case "stockChooseCenter" :
     case "stockGiveVaccin" :
     case "stockUpdateVaccin" :
-        ControllerStock::$action();
+    case "stockGiveVaccinFromCenter" :
+    case "stockUpdateVaccinFromCenter" :
+        ControllerStock::$action($args);
         break;
     
  // Tache par défaut

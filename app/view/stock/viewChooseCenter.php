@@ -13,7 +13,7 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
 
     <form role="form" method='get' action='router.php'>
       <div class="form-group">
-        <input type="hidden" name='action' value='stockGiveVaccin'>
+        <input type="hidden" name='action' value='<?php echo ($target);?>'>
         <label for="centre">Centre : </label> <select class="form-control" id='centre' name='centre' style="width: 500px">
             <?php
             foreach ($results as $element) {

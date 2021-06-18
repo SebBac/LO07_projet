@@ -55,6 +55,20 @@ class modelCentre {
    return NULL;
   }
  }
+ 
+ public static function getAllExceptOne($id) {
+  try {
+   $database = Model::getInstance();
+   $query = "SELECT * FROM centre WHERE id != :id";
+   $statement = $database->prepare($query);
+   $statement->execute(["id" => $id]);
+   $results = $statement->fetchAll(PDO::FETCH_CLASS, "modelCentre");
+   return $results;
+  } catch (PDOException $e) {
+   printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+   return NULL;
+  }
+ }
 
  public static function insert($label, $adresse) {
   try {
