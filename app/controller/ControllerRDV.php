@@ -77,11 +77,6 @@ public static function defVaccinationpatient() {
         $patate=ModelRDV::insert($centre_id, $patient_id, 1, $vaccin_id);
     }
     $patate2=ModelStock::updateStock($centre_id, $vaccin_id, -1);
-    
-    
-    
-    
-    //
      
      // ----- Construction chemin de la vue
     include 'config.php';
