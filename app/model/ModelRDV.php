@@ -98,10 +98,11 @@ class modelRDV {
      'injection' => $injection,
      'vaccin_id' => $vaccin_id,
    ]);
+   return true;
    
   }catch (PDOException $e) {
    printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
-   return -1;
+   return false;
   }
  }
  
