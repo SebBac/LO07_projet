@@ -118,7 +118,7 @@ class modelStock {
     $database = Model::getInstance();
     $query = "SELECT centre_id, quantite FROM stock WHERE quantite>0 AND vaccin_id = :vaccin_id";
     $statement = $database->prepare($query);
-    $statement->execute();
+    $statement->execute(["vaccin_id" => $vaccin_id]);
     $results1 = $statement->fetchAll(PDO::FETCH_NUM);
     $query = "SELECT label FROM centre";
     $statement = $database->prepare($query);

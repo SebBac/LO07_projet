@@ -19,34 +19,25 @@ class ControllerRDV {
     
  public static function getRDVpatient() {
   $patient = explode (" | ", $_GET["patient"]);
+  $results = ModelRDV::getPatientHighInjectionRDV($patient[0]);
+  $dose = $results[0][4];
   $results = ModelRDV::getPatientRDV($patient[0]);
   $centre = modelCentre::getAll();
   $vaccin = modelVaccin::getAll();
   if(isset($results[0])){
-      foreach($results as $element){
-          $vaccin=ModelVaccin::getOne($element->getVaccin_id());
-          $vaccin_id=$element->getVaccin_id();
+      if($dose == $vaccin[$results[0]->getVaccin_id()-1]->getDose()){
+          $vaccination=5;
       }
-      foreach($vaccin as $element){
-          $dose_max=$element->getDose();
+      else{
+          $vaccination=3;
+          $centre_choix=ModelStock::getGlobalDispoRestraint($vaccin_id);
       }
-    foreach ($results as $element) {
-        if($element->getInjection()>0 && $element->getInjection()<$dose_max){
-            $vaccination=3;
-            $centre_choix=ModelStock::getGlobalDispoRestraint($vaccin_id);
-            
-        }
-        elseif($element->getInjection()===$dose_max){
-            $vaccination=5;
-        }
-    }
-        }
-    else{
-        //devons choisir centre et vaccin
-            $vaccination=1;
-            $centre_choix=ModelStock::getGlobalDispo();        
-    }
-  
+  }
+  else {
+    //devons choisir centre et vaccin
+    $vaccination=1;
+    $centre_choix=ModelStock::getGlobalDispo();
+  }
   
   // ----- Construction chemin de la vue
   include 'config.php';
