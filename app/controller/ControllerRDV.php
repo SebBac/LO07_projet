@@ -23,17 +23,28 @@ class ControllerRDV {
   $centre = modelCentre::getAll();
   $vaccin = modelVaccin::getAll();
   if(isset($results[0])){
+      foreach($results as $element){
+          $vaccin=ModelVaccin::getOne($element->getVaccin_id());
+          $vaccin_id=$element->getVaccin_id();
+      }
+      foreach($vaccin as $element){
+          $dose_max=$element->getDose();
+      }
     foreach ($results as $element) {
-        if($element->getInjection()>=1 && $element->getVaccin_id()!=4){
-            //choix d'un centre ayant le vaccin du premier injection
+        if($element->getInjection()>0 && $element->getInjection()<$dose_max){
+            $vaccination=3;
+            $centre_choix=ModelStock::getGlobalDispoRestraint($vaccin_id);
+            
         }
-        
-            }
+        elseif($element->getInjection()===$dose_max){
+            $vaccination=5;
+        }
+    }
         }
     else{
         //devons choisir centre et vaccin
-        $vaccination_necessaire=1;
-        $centre_choix=ModelStock::getGlobalDispo();
+            $vaccination=1;
+            $centre_choix=ModelStock::getGlobalDispo();        
     }
   
   
@@ -47,6 +58,7 @@ class ControllerRDV {
      $centre_nom=$_GET["centre_choix"];
      $patient = explode (" | ", $_GET["patient"]);
      $patient_id=$patient[0];
+     $results = ModelRDV::getPatientRDV($patient_id);
      $centre=ModelCentre::getOne($centre_nom);
      foreach ($centre as $element) {
          $centre_id=$element->getId();
@@ -57,19 +69,23 @@ class ControllerRDV {
         foreach($categorie as $element){
             if($element->getQuantite()>$max){
                 $max=$element->getQuantite();
-                $vaccin_id=$element->getId();
+                $vaccin_id=$element->getVaccin_id();
             }
         }
     }
-    $results = ModelRDV::getPatientRDV($patient_id);
+    $max2=0;
     if(isset($results[0])){
     foreach ($results as $element) {
-        $patate=ModelRDV::insert($centre_id, $patient_id, $element->getInjection()+1, $vaccin_id);
-            }
+        if($element->getInjection()>$max2){
+            $injection=$element->getInjection();
+        }
+    }
+    $patate=ModelRDV::insert($centre_id, $patient_id, $injection+1, $vaccin_id);
         }
     else{
         $patate=ModelRDV::insert($centre_id, $patient_id, 1, $vaccin_id);
     }
+    $patate2=ModelStock::updateStock($centre_id, $vaccin_id, -1);
     
     
     //

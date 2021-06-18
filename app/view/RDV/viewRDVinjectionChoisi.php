@@ -12,22 +12,20 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
     ?>
     <!-- ===================================================== -->
     <?php
-    if ($etat_stock) {
-     echo ("<h3>Preparation à injection </h3>");
+    if ($patate) {
+     echo ("<h3>Insertion réussi </h3>");
      echo("<ul>");
-     echo ("<li>Centre = " . $centre_nom . "</li>");
+     echo ("<li>Vaccin = " . $vaccin_id . "</li>");
      echo ("<li>ID lié = " . $centre_id . "</li>");
      echo("</ul>");
     } else {
-     echo ("<h3>Problème d'insertion du Vaccin</h3>");
-     echo ("id = " . $_GET['label']);
+     echo ("<h3>Problème d'insertion du Vaccination</h3>");
     }
     
-    echo '<pre>';
-    print_r($etat_stock);
-    echo '</pre>';
+    if($patate2){
+        echo ("<h3>Update stock réussi </h3>");
+    }
     
-    echo 'quantité max est : '. $max;
 
     echo("</div>");
     

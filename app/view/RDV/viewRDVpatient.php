@@ -31,7 +31,30 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
           }
           else{printf("<tr><td>-</td><td>%s</td><td>0</td><td>-</td></tr>", $patient[1]);}
           
-          if(isset($vaccination_necessaire)){
+          if($vaccination===1){
+              echo'<h3>Selectionner un centre de vaccination</h3>
+                  <form role="form" method="get" action="router.php">
+                    <div class="form-group">
+                      <input type="hidden" name="action" value="defVaccinationpatient">
+                      <label for="centre">Centre : </label> <select class="form-control" id="centre" name="centre_choix" style="width: 500px">';
+                          
+                          foreach ($centre_choix[0] as $element) {
+                           printf("<option>%s</option>", $centre_choix[1][$element[0]-1][0]);
+                          }
+                          
+                      echo'</select>
+                    
+                      <label for="patient">Pour Patient : </label> <input type="text" class="form-control" id="patient" placeholder="'.$_GET["patient"].'" name="patient" velue="'.$_GET["patient"].'">
+                          
+                      </select>
+                    </div>
+
+                    <p/>
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                  </form>
+                  <p/>';
+          }
+          elseif($vaccination===3){
               echo'<h3>Selectionner un centre de vaccination</h3>
                   <form role="form" method="get" action="router.php">
                     <div class="form-group">

@@ -112,6 +112,24 @@ class modelStock {
         return NULL;
     }
  }
+ 
+ public static function getGlobalDispoRestraint($vaccin_id) {
+    try {
+    $database = Model::getInstance();
+    $query = "SELECT centre_id, quantite FROM stock WHERE quantite>0 AND vaccin_id = :vaccin_id";
+    $statement = $database->prepare($query);
+    $statement->execute();
+    $results1 = $statement->fetchAll(PDO::FETCH_NUM);
+    $query = "SELECT label FROM centre";
+    $statement = $database->prepare($query);
+    $statement->execute();
+    $results2 = $statement->fetchAll(PDO::FETCH_NUM);
+    return array($results1, $results2);
+    } catch (PDOException $e) {
+        printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+        return NULL;
+    }
+ }
 
  public static function isStockDefined($centre_id, $vaccin_id){
     try {
