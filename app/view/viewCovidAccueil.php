@@ -1,4 +1,4 @@
-//test 
+
 <!-- ----- debut de la page covid acceuil -->
 <?php include 'fragment/fragmentCovidHeader.html'; ?>
 <body>
