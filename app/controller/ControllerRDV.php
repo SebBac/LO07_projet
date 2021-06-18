@@ -28,41 +28,35 @@ class ControllerRDV {
   require ($vue);
  }
  
+ 
+
+ 
  public static function getNBvaccine() {
+     function update_last(&$array, $value){
+    array_pop($array);
+    array_push($array, $value);     
+}
      $nbvaccinee=array();
   $patient_id = ModelPatient::getAllId();
+  $compt=0;
   foreach ($patient_id as $value) {
       $results = ModelRDV::getPatientRDV($value);
       if(isset($results[0])){
             foreach ($results as $element) {
+              if($compt=0){
               $patate=$element->getInjection();
-              array_push($nbvaccinee,2);
+              array_push($nbvaccinee,1);
+              }
+              else{
+                  update_last($nbvaccinee, 2);
+              }
+              }
             }
-          }
     else{
         array_push($nbvaccinee,0);
     }
-      /*$patate=$value->getInjection();
+    $compt=0;
       
-      if(is_array($patate)){
-          array_push($nbvaccinee,2);
-      }
-      elseif(isset($patate)){
-          array_push($nbvaccinee,1);
-      }
-      else{
-          array_push($nbvaccinee,0);
-      }*/
-      
-      //$results = ModelRDV::get_Injection($value);
-      /*if(isset($results[0])){
-      array_push($nbvaccinee,2);}
-        else{
-            array_push($nbvaccinee,1);}
-        }
-        else{
-      array_push($nbvaccinee,0);
-  }*/   
   }
   // ----- Construction chemin de la vue
   include 'config.php';
