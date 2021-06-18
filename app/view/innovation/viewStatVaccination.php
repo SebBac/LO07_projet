@@ -25,23 +25,23 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
                 echo '<pre>';
                 print_r($nbvaccinee);
                 echo '</pre>';
-          /*$totalement=0;
+          $totalement=0;
           $en_cours=0;
           $attente=0;
           
           foreach($nbvaccinee as $value){
-              if($value=2){
+              if($value===2){
                   $totalement=$totalement+1;
               }
-              elseif($value=1){
+              elseif($value===1){
                   $en_cours=$en_cours+1;
               }
-              elseif($value=0){
+              elseif($value===0){
                   $attente=$attente+1;
               }
           }
           
-              printf("<tr><td>%d</td><td>%d</td><td>%d</td></tr>", $totalement, $en_cours, $attente);*/
+              printf("<tr><td>%d</td><td>%d</td><td>%d</td></tr>", $totalement, $en_cours, $attente);
 
           ?>
       </tbody>

@@ -22,38 +22,54 @@ class ControllerRDV {
   $results = ModelRDV::getPatientRDV($patient[0]);
   $centre = modelCentre::getAll();
   $vaccin = modelVaccin::getAll();
+  if(isset($results[0])){
+    foreach ($results as $element) {
+        
+            }
+        }
+    else{
+        //devons choisir centre et vaccin
+        $vaccination_necessaire=1;
+        $centre_choix=ModelStock::getGlobalDispo();
+    }
+    $compt=0;
+  
+  
   // ----- Construction chemin de la vue
   include 'config.php';
   $vue = $root . '/app/view/RDV/viewRDVpatient.php';
   require ($vue);
  }
  
+ 
+
+ 
  public static function getNBvaccine() {
+     function update_last(&$array, $value){
+    array_pop($array);
+    array_push($array, $value);     
+}
      $nbvaccinee=array();
   $patient_id = ModelPatient::getAllId();
-  
+  $compt=0;
   foreach ($patient_id as $value) {
-      $patate=$value->getInjection();
+      $results = ModelRDV::getPatientRDV($value);
+      if(isset($results[0])){
+            foreach ($results as $element) {
+              if($compt=0){
+              $patate=$element->getInjection();
+              array_push($nbvaccinee,1);
+              }
+              else{
+                  update_last($nbvaccinee, 2);
+              }
+              }
+            }
+    else{
+        array_push($nbvaccinee,0);
+    }
+    $compt=0;
       
-      if(is_array($patate)){
-          array_push($nbvaccinee,2);
-      }
-      elseif(isset($patate)){
-          array_push($nbvaccinee,1);
-      }
-      else{
-          array_push($nbvaccinee,0);
-      }
-      
-      //$results = ModelRDV::get_Injection($value);
-      /*if(isset($results[0])){
-      array_push($nbvaccinee,2);}
-        else{
-            array_push($nbvaccinee,1);}
-        }
-        else{
-      array_push($nbvaccinee,0);
-  }*/   
   }
   // ----- Construction chemin de la vue
   include 'config.php';
