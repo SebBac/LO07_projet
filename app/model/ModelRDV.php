@@ -56,7 +56,7 @@ class modelRDV {
         $query = "SELECT * FROM rendezvous WHERE patient_id = :patient_id";
         $statement = $database->prepare($query);
         $statement->execute(['patient_id' => $patient_id]);
-        $results = $statement->fetchAll(PDO::FETCH_CLASS, ModelRDV);
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, modelRDV);
         return $results;
     } catch (PDOException $e) {
         printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
