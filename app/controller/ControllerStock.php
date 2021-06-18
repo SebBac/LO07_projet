@@ -51,6 +51,7 @@ class ControllerStock {
  // --- attribue les vaccins au centre choisi
  public static function stockUpdateVaccin(){
     $centre_id = $_GET["centre_id"];
+    $centre = $_GET["centre"];
     $vaccin = modelVaccin::getAll();
     $list_quantite = array();
     $i=0;
@@ -64,7 +65,6 @@ class ControllerStock {
             if($result == null){echo "ERREUR $i";}
         }
     }
-    //$results = modelVaccin::update($centre_id, $list_quantite);
     include 'config.php';
     $vue = $root . '/app/view/stock/viewUpdatedVaccin.php';
     if (DEBUG)

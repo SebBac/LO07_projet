@@ -87,9 +87,9 @@ class modelStock {
         $query = "UPDATE vaccin SET doses = doses - :doses WHERE id = :vaccin_id";
         $statement = $database->prepare($query);
         $statement->execute(["doses" => $doses, "vaccin_id" => $vaccin_id]);
-        $query = "UPDATE stock SET quantite = quantite + :doses WHERE centre_id = :centre_id";
+        $query = "UPDATE stock SET quantite = quantite + :doses WHERE centre_id = :centre_id AND vaccin_id = :vaccin_id";
         $statement = $database->prepare($query);
-        $statement->execute(["doses" => $doses, "centre_id" => $centre_id]);
+        $statement->execute(["doses" => $doses, "centre_id" => $centre_id, "vaccin_id" => $vaccin_id]);
     } catch (PDOException $e) {
         printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
         return NULL;
