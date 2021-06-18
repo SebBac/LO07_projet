@@ -63,6 +63,7 @@ public static function defVaccinationpatient() {
         }
     }
     $patate=ModelRDV::insert($centre_id, $patient_id, $injection+1, $results[0]->getVaccin_id());
+    $vaccin_id = $results[0]->getVaccin_id();
         }
     else{
         $max=0;
