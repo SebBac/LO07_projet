@@ -16,7 +16,7 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
      echo ("<h3>Insertion réussi </h3>");
      echo("<ul>");
      echo ("<li>Vaccin = " . $vaccin_id . "</li>");
-     echo ("<li>ID lié = " . $centre_id . "</li>");
+     echo ("<li>ID du centre = " . $centre_id . "</li>");
      echo("</ul>");
     } else {
      echo ("<h3>Problème d'insertion du Vaccination</h3>");
