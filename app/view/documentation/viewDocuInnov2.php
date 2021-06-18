@@ -23,8 +23,11 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
                  n'apparait pas dans la liste des possibles receveurs) et
                  la quantité de chaque vaccin à donner en tenant compte de la
                  quantité de vaccins disponibles dans le centre donneur.<br>
-                C'est donc la même chose que pour l'attribution de vaccins mais
-                 à partir du stock d'un centre.
+                Si le centre donneur sélectionné n'a aucun vaction en stock alors
+                 l'utilisateur en est informé et ne peut donc choisir aucun vaccin
+                 à envoyer au centre receveur.<br><br>
+                 <strong>Note :</strong> c'est donc sensiblement la même chose
+                 que pour l'attribution de vaccins mais à partir du stock d'un centre.
           </div>
       </div>
       
