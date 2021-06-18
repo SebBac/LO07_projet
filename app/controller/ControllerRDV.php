@@ -97,42 +97,6 @@ class ControllerRDV {
      
  }
  
- 
-
- 
- public static function getNBvaccine() {
-     function update_last(&$array, $value){
-    array_pop($array);
-    array_push($array, $value);     
-}
-     $nbvaccinee=array();
-  $patient_id = ModelPatient::getAllId();
-  $compt=0;
-  foreach ($patient_id as $value) {
-      $results = ModelRDV::getPatientRDV($value);
-      if(isset($results[0])){
-            foreach ($results as $element) {
-              if($compt=0){
-              $patate=$element->getInjection();
-              array_push($nbvaccinee,1);
-              }
-              else{
-                  update_last($nbvaccinee, 2);
-              }
-              }
-            }
-    else{
-        array_push($nbvaccinee,0);
-    }
-    $compt=0;
-      
-  }
-  // ----- Construction chemin de la vue
-  include 'config.php';
-  $vue = $root . '/app/view/innovation/viewStatVaccination.php';
-  require ($vue);
- }
- 
  public static function getStatPatient(){
     $patient = ModelPatient::getAllId();
     $vaccin = modelVaccin::getAll();

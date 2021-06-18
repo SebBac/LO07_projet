@@ -15,34 +15,14 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
     <table class = "table table-striped table-bordered">
       <thead>
         <tr>
-          <th scope = "col">Nombre de personne totalement vacciné</th>
-          <th scope = "col">Nombre de personne ayant reçu une dose</th>
-          <th scope = "col">Nombre de personne en attente d'une 1ere injection</th>
+          <th scope = "col">Nombre de personnes totalement vaccinées</th>
+          <th scope = "col">Nombre de personne ayant reçu au moins une dose</th>
+          <th scope = "col">Nombre de personne en attente d'une 1ère injection</th>
         </tr>
       </thead>
       <tbody>
           <?php
-          /*      echo '<pre>';
-                print_r($nbvaccinee);
-                echo '</pre>';
-          $totalement=0;
-          $en_cours=0;
-          $attente=0;
-          
-          foreach($nbvaccinee as $value){
-              if($value===2){
-                  $totalement=$totalement+1;
-              }
-              elseif($value===1){
-                  $en_cours=$en_cours+1;
-              }
-              elseif($value===0){
-                  $attente=$attente+1;
-              }
-          }*/
-
               printf("<tr><td>%d</td><td>%d</td><td>%d</td></tr>", $numVaccine, $numEnCours, $numNonVaccine);
-
           ?>
       </tbody>
     </table>
