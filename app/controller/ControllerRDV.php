@@ -30,7 +30,7 @@ class ControllerRDV {
       }
       else{
           $vaccination=3;
-          $centre_choix=ModelStock::getGlobalDispoRestraint($vaccin_id);
+          $centre_choix=ModelStock::getGlobalDispoRestraint($results[0]->getVaccin_id());
       }
   }
   else {
