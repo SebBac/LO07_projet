@@ -17,7 +17,14 @@ require ($root . '/app/view/fragment/fragmentCovidHeader.html');
               <h2 class="panel-title">Documentation innovation 2</h2>
           </div>
           <div class="panel-body">
-                Blablabla...
+              <h4>L'innovation 2 est l'envoie de vaccins d'un centre vers un autre centre :</h4>
+                On choisit d'abord le centre dont on veut redistribuer des vaccins
+                 puis on choisit le centre receveur (évidemment, le centre donneur
+                 n'apparait pas dans la liste des possibles receveurs) et
+                 la quantité de chaque vaccin à donner en tenant compte de la
+                 quantité de vaccins disponibles dans le centre donneur.<br>
+                C'est donc la même chose que pour l'attribution de vaccins mais
+                 à partir du stock d'un centre.
           </div>
       </div>
       
